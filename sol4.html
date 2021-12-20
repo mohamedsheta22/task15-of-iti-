@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sol4</title>
+    <script src="jq.js"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+            line-height: 1.5;
+        }
+        li {
+            cursor: pointer;
+            margin-bottom: 3px;
+        }
+        .output__container {
+            display: flex;
+            width: 900px;
+            justify-content: space-between;
+            margin: 3rem auto;
+        }
+        .leftdiv,
+        .rightdiv {
+            width: 400px;
+            height: 150px;
+            border: 5px solid rgb(230, 81, 81);
+            display: inline-block;
+            padding: 1rem;
+            overflow: scroll;
+        }
+        .input__container {
+            text-align: center;
+        }
+        .input__container input {
+            margin-bottom: 1rem;
+        }
+        .selected {
+            background-color: rgb(255, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="output__container">
+        <div class="leftdiv">
+            <li>JS</li>
+            <li>JQuery</li>
+            <li>Angular</li>
+            <li>HTML</li>
+        </div>
+        <div class="rightdiv">
+            <li>CSS</li>
+        </div>
+    </div>
+    <div class="input__container">
+        <input type="button" value="<" id="toLeftBtn" />
+        <input type="button" value=">" id="toRightBtn" />
+        <div class="input__field">
+            <label for="addCrsInput">Add Course</label>
+            <input type="text" name="addCrsInput" id="addCrsInput" />
+            <input type="button" value="Add" id="addCrsBtn" />
+        </div>
+    </div>
+    <script>
+        var leftDiv = document.getElementsByClassName("leftdiv")[0];
+        var rightDiv = document.getElementsByClassName("rightdiv")[0];
+        var addCrsInput = document.getElementById("addCrsInput");
+        var listItems = document.getElementsByTagName("li");
+        var selectdItems = document.getElementsByClassName("selected");
+
+        $(function(){
+            $("#addCrsBtn").on('click',function(){
+                if (addCrsInput.value) {
+                    var inputLi = document.createElement("li");
+                    var inputText = document.createTextNode(addCrsInput.value);
+                    inputLi.appendChild(inputText);
+                    leftDiv.appendChild(inputLi);
+                    addCrsInput.value = "";
+                    addCrsInput.focus();
+                    addEventListenersToLis();
+                }
+            });
+
+            $("#toLeftBtn").on('click',function(){
+                selectdItems = document.getElementsByClassName("selected");
+                for (var item = 0; item < selectdItems.length; item++) {
+                    leftDiv.append(selectdItems[item]);
+                }
+            });
+
+            $("#toRightBtn").on('click',function(){
+                selectdItems = document.getElementsByClassName("selected");
+                for (var item = 0; item < selectdItems.length; item++) {
+                    rightDiv.append(selectdItems[item]);
+                }
+            });
+
+
+
+            addEventListenersToLis();
+            function addEventListenersToLis() {
+                listItems = document.getElementsByTagName("li");
+                for (var i = 0; i < listItems.length; i++) {
+                    listItems[i].addEventListener("click", selectLi);
+                }
+            }
+            function selectLi() {
+                if (this.classList.contains("selected")) {
+                    this.classList.remove("selected");
+                } else {
+                    this.classList.add("selected");
+                }
+            }
+        });
+        
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sol2</title>
+    <script src="jq.js"></script>
+    <style>
+        table{
+            border:2px solid black;
+            width:507px;
+        }
+        th{
+            background:#ff4d4d;
+            color:white;
+        }
+        tr:nth-child(odd){
+            background:#5fa0fa;
+            }
+        tr:nth-child(even){
+            background-color:#b5bac2;
+            }
+        td{
+            padding:5px;
+            }
+    </style>
+</head>
+<body>
+    <input type="text" style="width: 500px;">
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        <tr>
+            <td>Ahmed</td>
+            <td>sheta.alex</td>
+        </tr>
+        <tr>
+            <td>Osama</td>
+            <td>sheta.mansoura</td>
+        </tr>
+        <tr>
+            <td>Mahmoud</td>
+            <td>sheta.aurgada</td>
+        </tr>
+        <tr>
+            <td>Mostafa</td>
+            <td>sheta.caire</td>
+        </tr>
+        <tr>
+            <td>Eman</td>
+            <td>sheta.met</td>
+        </tr>
+        <tr>
+            <td>Amal</td>
+            <td>sheta.met</td>
+        </tr>
+        <tr>
+            <td>Mohamed</td>
+            <td>sheta</td>
+        </tr>
+    </table>
+
+
+
+
+
+    <script>
+        $(document).ready(function(){
+            //td first
+            $(":text:first").keyup(function(){
+                var inputval = $(this).val();
+                $("tr").each(function(){
+                    var currentvalue = $(this).children("td:first").text();
+                    if(currentvalue.toLowerCase() .indexOf(inputval.toLowerCase()) != -1){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+                });
+            });
+            //td second 
+            $(":text:first").keyup(function(){
+                var inputval = $(this).val();
+                $("tr").each(function(){
+                    var currentvalue = $(this).children("td:Last").text();
+                    if(currentvalue.toLowerCase() .indexOf(inputval.toLowerCase()) != -1){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+                });
+            });
+
+            //tr
+            $(":text:first").keyup(function(){
+                //var inputval = $(this).val().split(" ");
+                var inputval = $(this).val();
+                var inputtotalval = inputval.split(" ");
+                // console.log(inputtotalval[1]);
+                $("tr").each(function(){
+                    var currentvalue = $(this).children("td:Last,td:first").text();
+                    if(currentvalue.toLowerCase() .indexOf(inputtotalval[0].toLowerCase()&&inputtotalval[1].toLowerCase()) != -1){
+                        $(this).show();
+                    }else{
+                        $(this).hide();
+                    }
+                });
+            });
+            
+
+
+
+
+
+
+
+        });
+    </script>
+</body>
+</html>

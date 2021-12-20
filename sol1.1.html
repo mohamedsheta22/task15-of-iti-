@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sol1.1</title>
+    <script src="jq.js"></script>
+    <style>
+        *{
+            padding:0px;
+            margin:0px;
+         }
+        #colorsbar{
+            display:flex;
+            flex-direction:row;
+            background:rgb(247, 241, 239);
+            width:auto;
+            }
+        .colors{
+            width:70px;
+            height: 70px;
+            margin:2px auto;
+            border-radius:50%;
+            border:2px solid #fff;
+            text-align: center;
+            }
+    </style>
+</head>
+<body>
+    <div id="colorsbar">
+        <div style="background:#e63946;" class="colors" id="color_one"></div>
+        <div style="background:#f77f00;" class="colors" id="color_two"></div>
+        <div style="background:#10002b;" class="colors" id="color_three"></div>
+    </div>
+
+    <script>
+        $(function(){
+            $("#color_one").click(function(){
+                $("#colorsbar").append($(this).clone(true,true));
+            });
+            $("#color_two").click(function(){
+                $("#colorsbar").append($(this).clone(true,true));
+            });
+            $("#color_three").click(function(){
+                $("#colorsbar").append($(this).clone(true,true));
+            });
+        });//end 
+    </script>
+</body>
+</html>

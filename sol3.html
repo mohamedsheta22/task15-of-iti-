@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jq.js"></script>
+    <title>sol3</title>
+    <style>
+        input[name="add"]{
+            margin-top:10px;
+        }
+        tr,td,th{
+            border:2px solid black;
+            padding:10px;
+        }
+        table{
+            width:500px;
+            padding:10px;
+            margin:10px auto;
+        }
+        th{
+            background:#121314;
+            color:#fff;
+            font-weight:bold;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <label>New Type : </label>
+        <input type="radio" name="sport"><span>Sport</span>
+        <input type="radio" name="Social"><span>Social</span>
+        <input type="radio" name="Politic"><span>Politic</span>
+        <br>
+        <table id="table">
+            <tr>
+                <th>Serial</th>
+                <th>Topic</th>
+            </tr>
+        </table>
+        <input type="text" name="add" id="input_add"><input type="reset" value="Add">
+    </div>
+    <script>
+
+        $(document).ready(function(){
+            radioBtns =$("input[type='radio']");
+            $(":reset").click(function(){
+                input_add = document.getElementById('input_add').value;
+                table = document.getElementById('table');
+                tr =document.createElement("tr");
+                td =document.createElement("td");
+                table.appendChild(tr);
+                tr.append(td);
+                first_td=document.createElement("td");
+                x=0;
+                x+=1;
+                text_node = document.createTextNode(x);
+                tr.appendChild(first_td);
+                first_td.appendChild(text_node);
+                tr.appendChild(td);
+                td.innerText = input_add ;
+                for(var i = 0; i < radioBtns.length; i++) {
+                    if (radioBtns[i].checked)
+                        td.style.backgroundColor = color;
+                        first_td.style.backgroundColor = color;
+                }
+             });
+             $(radioBtns[0]).click(function () {
+                    color = "red";
+                });
+
+                $(radioBtns[1]).click(function () {
+                    color = "blue";
+                });
+
+                $(radioBtns[2]).click(function () {
+                    color = "green";
+                });
+
+        });
+
+    </script>
+</body>
+</html>
